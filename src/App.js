@@ -1,25 +1,44 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from './components/Header';
+import Form from './components/Form';
+import List from './components/List';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { insertTask, toggleTask, clearCompleted } from './action-creators';
+import React, { Component } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  displayTasks = () => {
+    const { tasks } = this.props;
+    return tasks.map((task) => {
+      return (
+        <List task={task} toggleTask={this.props.toggleTask} key={task.id} />
+      );
+    });
+  };
+  render() {
+    return (
+      <div>
+        <Header />
+        <Form
+          insertTask={this.props.insertTask}
+          tasks={this.props.tasks}
+          clearCompleted={this.props.clearCompleted}
+        />
+        {this.displayTasks()}
+      </div>
+    );
+  }
 }
+const mapStateToProps = (state) => {
+  const { tasks } = state.todoReducer;
+  return { tasks };
+};
 
-export default App;
+export default withRouter(
+  connect(mapStateToProps, {
+    insertTask: insertTask,
+    toggleTask: toggleTask,
+    clearCompleted: clearCompleted,
+  })(App)
+);
