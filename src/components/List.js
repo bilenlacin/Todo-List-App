@@ -7,15 +7,16 @@ export class List extends Component {
   render() {
     const { task } = this.props;
     return (
-      <div className='taskLists'>
-        <div className='listItem'>
-          <p
-            className={'task-' + (task.complete ? 'completed ' : 'complete')}
-            onClick={() => this.toggleOnOff(task)}
+      <div className='taskList'>
+        <td className='listItem' onClick={() => this.toggleOnOff(task)}>
+          <input type='checkbox' checked={task.complete} />
+          <span
+            for='task'
+            id={'task-' + (task.complete ? 'completed' : 'complete')}
           >
             {task.task}
-          </p>
-        </div>
+          </span>
+        </td>
       </div>
     );
   }

@@ -1,3 +1,19 @@
-.task-completed {
+#task-completed {
   text-decoration: line-through;
+}
+.listItem {
+  display: flex;
+  align-items: center;
+  background-color: rgb(245, 245, 245);
+  border-radius: 5px;
+  height: 45px;
+}
+.taskList {
+  padding-top: 7px;
+}
+#task-complete:hover {
+  color: grey;
+}
+#task-completed:hover {
+  color: grey;
 }

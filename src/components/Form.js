@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Form.css';
 
 export class Form extends Component {
   constructor(props) {
@@ -15,7 +16,11 @@ export class Form extends Component {
   sendTask = () => {
     this.setState({ id: this.state.id + 1 });
     const task = this.state;
-    this.props.insertTask(task);
+    if (this.state.task === '') {
+      return;
+    } else {
+      this.props.insertTask(task);
+    }
     this.setState({ task: '' });
   };
   clearCompleted = () => {
@@ -29,6 +34,7 @@ export class Form extends Component {
           type='text'
           placeholder='Enter task...'
           value={this.state.task}
+          className='inputBox'
         />
         <button className='submitButton' onClick={() => this.sendTask()}>
           Submit

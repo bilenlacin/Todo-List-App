@@ -1,0 +1,26 @@
+.inputBox {
+  width: 99%;
+  height: 29px;
+  border-radius: 3px;
+  border: 3px solid #ced4da;
+}
+.inputBox:focus {
+  outline: none;
+  border: 3px solid #9fb7cf;
+}
+.submitButton {
+  margin: 7px 15px 7px 0;
+  background-color: #69c1e6;
+  border: none;
+  padding: 9px;
+  border-radius: 5px;
+  color: white;
+}
+.clearCompletedButton {
+  margin: 7px 15px 7px 0;
+  background-color: #69c1e6;
+  border: none;
+  padding: 9px;
+  border-radius: 5px;
+  color: white;
+}

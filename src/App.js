@@ -18,14 +18,16 @@ class App extends Component {
   };
   render() {
     return (
-      <div>
-        <Header />
-        <Form
-          insertTask={this.props.insertTask}
-          tasks={this.props.tasks}
-          clearCompleted={this.props.clearCompleted}
-        />
-        {this.displayTasks()}
+      <div className='container'>
+        <div className='row'>
+          <Header />
+          <Form
+            insertTask={this.props.insertTask}
+            tasks={this.props.tasks}
+            clearCompleted={this.props.clearCompleted}
+          />
+          {this.displayTasks()}
+        </div>
       </div>
     );
   }
